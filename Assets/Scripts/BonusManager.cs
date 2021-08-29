@@ -7,11 +7,11 @@ public class BonusManager : MonoBehaviour
 {
 
     private float xRange = 4;
-    private float yPos = 0.5f;
+    private float yPos = 0.6f;
     private float zPos = 80;
 
     public GameObject bonus;
-    public PlayerController playerController;
+    private PlayerController playerController;
 
     private float startTime = 3;
     private float repeatRate = 3;

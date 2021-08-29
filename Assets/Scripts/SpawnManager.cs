@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject obstacle;
-    public PlayerController playerController;
+    private PlayerController playerController;
 
     private float xPos;
     private float xRange = 3;

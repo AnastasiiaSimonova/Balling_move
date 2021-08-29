@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public AudioClip bonusSound;
+    public AudioClip crashSound;
+    private AudioSource playerAudio;
 
     private float speed = 5;
     private float horizontalInput;
@@ -15,10 +18,9 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        playerAudio = GetComponent<AudioSource>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        gameOver = false;
     }
 
     // Update is called once per frame
@@ -55,9 +57,11 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             gameManager.UpdateScore();
+            playerAudio.PlayOneShot(bonusSound, 1.0f);
         }
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
+            playerAudio.PlayOneShot(crashSound, 1.0f);
             gameOver = true;
             gameManager.GameOver();
         }
